@@ -1,38 +1,280 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
-body {
-    font-family: 'Poppins', sans-serif;
-}
-
 .homeSection {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 60%;
-    margin: 20vh 75vw;
+    margin: 20vh 70vw;
 }
 
 .homeInfo {
-    background: #000;
+    position: absolute;
+    overflow: hidden;
+    background-color: #13222bcc;
+    background-image: linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%), linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%); background-size: 100% 4px;
     transform: scale(0);
-    width: 50%;
+    border-radius: 10px;
+    border: solid 2px #078a9bcc;
+    box-shadow: 0 0 30px rgb(117, 216, 255);
+    width: 35vw;
     height: 65vh;
+    padding: 2.5%;
 }
 
 .homeInfo h1 {
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 5px rgba(0, 230, 246, 0.7),
+        0 0 10px rgba(0, 230, 246, 0.5);
     text-align: center;
     font-weight: 700;
-    font-size: 3em;
+    font-size: clamp(40px, 5vw, 50px);
 }
 
+.homeInfo h3 {
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 5px rgba(0, 230, 246, 0.7),
+        0 0 10px rgba(0, 230, 246, 0.5);
+    text-align: center;
+    font-size: clamp(18px, 5vw, 22px);
+}
+
+#changing-text::after {
+    content: '|';
+    display: inline-block;
+    color: #00e6f6;
+    margin-left: 3px;
+    animation: blink-cursor 0.75s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.homeInfo p {
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 5px rgba(0, 0, 0, 0.7),
+        0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 7.5% 0;
+    text-align: justify;
+    font-size: clamp(15px, 5vw, 19px);
+}
+
+.homeInfo ul {
+    font-size: clamp(12px, 5vw, 16px);
+    display: flex;
+    list-style: none;
+}
+
+.homeInfo a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+.usualTech li {
+    background: #041e22b6;
+    background-color: rgb(66, 66, 66);
+    border: 3px solid #24242473;
+    border-radius: 5px;
+    padding: 0.5em;
+    margin-right: 1em;
+    font-size: clamp(12px, 5vw, 16px);
+}
+
+.homeLinks a {
+    background: #363636;
+    font-size: 20px;
+    border-radius: 7px;
+    box-shadow: 5px 5px 0px #000000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all .2s;
+    position: relative;
+    padding: 0.5em;
+    width: 6vw;
+    margin: 7.5% 0;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    margin-right: 1em;
+    font-size: clamp(13px, 5vw, 17px);
+}
+
+.homeLinks a:active {
+    top: 2px;
+    left: 2px;
+    box-shadow: 1px 1px 0px #000000;
+    transition: all .2s;
+}
+
+.socialLinks {
+    display: flex;
+    align-items: center;
+    column-gap: 2vw;
+    margin-top: 1.5vw;
+}
+
+.icon {
+    display: inline-flex;
+    width: 2vw;
+    height: 2vw;
+    text-decoration: none;
+    font-size: 25px;
+    outline: 2px solid white;
+    border-radius: 50%;
+    transition-property: outline-offset, outline-color, background-color;
+    transition-duration: 0.25s;
+    color: white;
+}
+
+.icon:hover {
+  outline-offset: 4px;
+}
+
+.icon i {
+    margin: auto;
+    font-size: clamp(20px, 5vw, 25px);
+}
+
+.gitIcon:hover {
+    background-color: #555555;
+    outline-color: #555555;
+}
+
+.inIcon:hover {
+    background-color: #0a66c2;
+    outline-color: #0a66c2;
+}
+
+.stackIcon:hover {
+    background-color: rgb(255, 136, 0);
+    outline-color: rgb(255, 136, 0);
+}
+
+.icon:hover i {
+    animation: shake 0.25s;
+} 
+
 .homeAnimation {
+    position: absolute;
+    top: 15vh;
+    left: 105vw;
     background: radial-gradient(
         circle, 
-        rgba(7, 46, 51, 0.842) 30%,
-        transparent 55%
+        rgba(5, 32, 36, 0.897) 30%,
+        transparent 45%
     );
     border-radius: 50%;
     padding: 8%;
     transform: scale(0);
+}
+
+@keyframes shake {
+    10% {
+        transform: rotate(15deg);
+    }
+    20% {
+        transform: rotate(-15deg);
+    }
+}
+
+@keyframes clockWise {
+    0% {
+        transform: rotate(0deg);
+    }
+    49% {
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+    
+    50% {
+        transform: rotate(360deg);
+        opacity: 0;
+    }
+
+    51% {
+        transform: rotate(352.6530deg);
+        opacity: 1;
+    }
+    
+    99% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes antiClockWise {
+    0% {
+        transform: rotate(0deg);
+    }
+    49% {
+        transform: rotate(-360deg);
+        opacity: 1;
+    }
+    
+    50% {
+        transform: rotate(-360deg);
+        opacity: 0;
+    }
+
+    51% {
+        transform: rotate(-352.6530deg);
+        opacity: 1;
+    }
+    
+    99% {
+        transform: rotate(0deg);
+    }
+}
+
+#outRing {
+    transform-origin: center;
+    animation: clockWise 5s linear infinite;
+    transition: transform 0.3s ease-out;
+}
+
+#subOutRing {
+    transform-origin: center;
+    animation: antiClockWise 7s linear infinite;
+}
+
+#decorRing path {
+    transform-origin: center;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#Ellipse\ 11, #Vector_2 {
+    animation-name: clockWise;
+    animation-duration: 13s;
+}
+
+#Vector, #Vector_3 {
+    animation-name: antiClockWise;
+    animation-duration: 10s;
+}
+
+#middleRing {
+    transform-origin: center;
+    animation: clockWise 11s linear infinite;
+}
+
+#innerRing {
+    transform-origin: center;
+    animation: antiClockWise 5s linear infinite;
+}
+
+#core {
+    transform-origin: center;
+    animation: clockWise 4s linear infinite;
+}
+
+#HomeCoreAnimation path {
+    transform: scale(0);
+    transform-origin: center;
 }

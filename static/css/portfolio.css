@@ -1,11 +1,12 @@
 .portfolioSection {
-    margin: 50% 140%;
+    margin-top: 93vh;
+    margin-left: 120vw;
 }
 
 .portfolioButtons {
     transform: scale(0);
     margin-top: 10%;
-    right: -43vw;
+    margin-left: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,7 +64,7 @@
 
 .portfolio {
     transform: scale(0);
-    margin: 5% 20%;
+    margin: 5% 15%;
     left: 140vw;
     width: 20vw;
     height: 45vh;
@@ -157,6 +158,7 @@
     padding-top: 10%;
     color: #FFF;
     border-radius: 10px;
+    overflow: hidden;
     box-sizing: border-box;
     transition: box-shadow 0.3s, justify-content 0.7s ease-out;
 }
@@ -212,7 +214,7 @@
 }
 
 .description p {
-    font-size: 14px;
+    font-size: clamp(8px, 5vw, 12px);
     text-align: justify;
 }
 
@@ -229,7 +231,7 @@
     padding: 5px;
     border-radius: 5px;
     background: #444;
-    font-size: 12px;
+    font-size: clamp(6px, 5vw, 10px);
     display: inline-block;
 }
 
@@ -239,7 +241,7 @@
 
 .project.is-front .description {
     opacity: 1;
-    max-height: 40vh;
+    max-height: 20vh;
     transform: scaleY(1);
 }
 
@@ -278,7 +280,7 @@
     align-items: center; 
     justify-content: center;
     left: 140vw;
-    margin: 2.5% 10%;
+    margin: 2.5% 5%;
     transform: scale(0);
     background: #05131f;
     width: 40vw;
@@ -405,7 +407,7 @@
 }
 
 .tech h4 {
-    font-size: clamp(12px, 5vw, 16px);
+    font-size: clamp(10px, 5vw, 13px);
     white-space: nowrap;
     position: absolute;
     margin-top: 0;

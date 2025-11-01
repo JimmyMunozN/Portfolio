@@ -1,4 +1,4 @@
-import { pulseAnimation } from "./animation.js";
+import { pulseAnimation, componentAnimation } from "./animation.js";
 import { homeStart } from "./home.js";
 import { portfolioStart } from "./projects.js";
 
@@ -43,10 +43,18 @@ async function scrollToTarget(target) {
     await new Promise(resolve => setTimeout(resolve, TRANSITION_TIME + 50));
 }
 
+async function handlePageTransition(targetPageName) {
+    scrollToTarget(targetPageName);
+    await loadContent(targetPageName);
+}
 
 async function loadContent(pageName) {
     const contentDiv = document.getElementById('content');
+    const newContentDiv = contentDiv.querySelector('.newContent');
+    const oldContentDiv = contentDiv.querySelector('.oldContent');
     const url = `/get-content/${pageName}`;
+    const xValue = '0'; 
+    const yValue = '0';
 
     try {
         const response = await fetch(url);
@@ -55,16 +63,24 @@ async function loadContent(pageName) {
             throw new Error(`Error al cargar la página: ${response.status}`);
         }
 
+        pulseAnimation(pageName);
+
         const htmlContent = await response.text();
 
-        contentDiv.innerHTML = htmlContent;
+        oldContentDiv.innerHTML = newContentDiv.innerHTML;
 
-        await new Promise(resolve => setTimeout(resolve, TRANSITION_TIME));
+        newContentDiv.innerHTML = htmlContent;
+
+        componentAnimation(pageName, xValue, yValue);
+        await new Promise(resolve => setTimeout(resolve, 1200));
+
+        oldContentDiv.innerHTML = null;
 
         if (pageName === 'projects') {
             portfolioStart();
         } else if (pageName === 'home') {
             homeStart();
+            setLinks('');
         }
 
     } catch (error) {
@@ -92,11 +108,7 @@ async function handleVerticalScroll(event) {
 
         actualTarget = newIndex;
 
-        pulseAnimation(target);
-
-        await loadContent(target); 
-        
-        await scrollToTarget(target);
+        await handlePageTransition(target);
 
         isScrolling = false; 
     } else {
@@ -104,8 +116,25 @@ async function handleVerticalScroll(event) {
     }
 }
 
+function setLinks() {
+    const validPages = new Set(['home', 'about', 'projects', 'contact']);
+
+    document.querySelectorAll('#newContent a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); 
+
+            const pageName = e.currentTarget.getAttribute('data-page'); 
+            
+            if (pageName && validPages.has(pageName)) {
+                handlePageTransition(pageName);
+            }
+        });
+    });
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
+    const validPages = new Set(['home', 'about', 'projects', 'contact']);
     pulseAnimation('start');
     window.addEventListener('wheel', handleVerticalScroll, { passive: false });
     setTimeout(() => {
@@ -117,32 +146,17 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault(); 
             
-            const text = e.target.textContent.toLowerCase().trim();
-            let target;
-
-            if (text.includes('home')) target = 'home';
-            else if (text.includes('about')) target = 'about';
-            else if (text.includes('portfolio')) target = 'projects';
-            else if (text.includes('contact')) target = 'contact';
-
-            const pageName = e.target.getAttribute('data-page'); 
+            const pageName = e.currentTarget.getAttribute('data-page'); 
             
-            if (pageName) {
-                loadContent(pageName);
-            }
-            
-            if (target) {
-                scrollToTarget(target);
-                pulseAnimation(target);
+            if (pageName && validPages.has(pageName)) {
+                handlePageTransition(pageName);
             }
         });
     });
 
     document.querySelector('#navbar button').addEventListener('click', (e) => {
         e.preventDefault();
-        loadContent('start');
-        scrollToTarget('start');
-        pulseAnimation('start');
+        handlePageTransition('start');
     });
 });
 

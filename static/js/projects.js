@@ -1,8 +1,6 @@
 import { componentAnimation } from "./animation.js";
 
-export async function portfolioStart() {    
-    componentAnimation('projects', '20rem', '0');
-    await new Promise(resolve => setTimeout(resolve, 520));
+export async function portfolioStart() {
     portfolioContent();
     componentAnimation('.portfolio', '-32vw', '-5rem');
     projectCarousel();

@@ -33,7 +33,8 @@ export async function componentAnimation(target, xvalue, yvalue) {
         'home': '.homeInfo',
         'about': '.about',
         'projects': '.portfolioButtons',
-        'contact': '.contact'
+        'contact': '.contact',
+        'start': '.start'
     };
 
     const selector = componentClass[target] ?? target;
@@ -47,17 +48,18 @@ export async function componentAnimation(target, xvalue, yvalue) {
 
         if (isTargetContainer && container !== null) {
             await animateExit(content, xvalue, prevYvalue);
-            await animateExit(container, xvalue, yvalue);
+            await animateExit(container, 0, 0);
         }
 
-        const newAnimation = animate(selector, entryProps(xvalue, yvalue));
-        prevYvalue = yvalue;
-
         if (isTargetContainer) {
+            await new Promise(resolve => setTimeout(resolve, 700));
             container = selector;
         } else {
             content = selector;
         }
+
+        const newAnimation = animate(selector, entryProps(xvalue, yvalue));
+        prevYvalue = yvalue;
     }
 
     prevTarget = target;

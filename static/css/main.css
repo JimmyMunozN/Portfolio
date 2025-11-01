@@ -8,6 +8,7 @@ html, body {
     width: 100%;
     background-color: #0C0404;
     color: white; 
+    font-family: 'Poppins', sans-serif;
 }
 
 #backgroundContainer {
@@ -28,6 +29,10 @@ html, body {
 #content {
     position: relative;
     z-index: 20;
+}
+
+.newContent, .oldContent{
+    position: absolute;
 }
 
 nav {
@@ -87,79 +92,4 @@ nav {
     max-width: 100%;
     height: auto;
     cursor: pointer;
-}
-
-@keyframes clockWise {
-    0% {
-        transform: rotate(0deg);
-    }
-    49% {
-        transform: rotate(360deg);
-    }
-    
-    50% {
-        transform: rotate(360deg);
-    }
-    
-    99% {
-        transform: rotate(0deg);
-    }
-}
-
-@keyframes antiClockWise {
-    0% {
-        transform: rotate(0deg);
-    }
-    49% {
-        transform: rotate(-360deg);
-    }
-    
-    50% {
-        transform: rotate(-360deg);
-    }
-    
-    99% {
-        transform: rotate(0deg);
-    }
-}
-
-#outRing {
-    transform-origin: center;
-    animation: clockWise 5s linear infinite;
-}
-
-#subOutRing {
-    transform-origin: center;
-    animation: antiClockWise 7s linear infinite;
-}
-
-#decorRing path {
-    transform-origin: center;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-#Ellipse\ 11, #Vector_2 {
-    animation-name: clockWise;
-    animation-duration: 13s;
-}
-
-#Vector, #Vector_3 {
-    animation-name: antiClockWise;
-    animation-duration: 10s;
-}
-
-#middleRing {
-    transform-origin: center;
-    animation: clockWise 11s linear infinite;
-}
-
-#innerRing {
-    transform-origin: center;
-    animation: antiClockWise 5s linear infinite;
-}
-
-#core {
-    transform-origin: center;
-    animation: clockWise 4s linear infinite;
 }
