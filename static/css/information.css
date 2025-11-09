@@ -13,7 +13,7 @@
     box-shadow: 0 0 30px rgb(117, 216, 255);
     width: 35vw;
     height: 65vh;
-    padding: 2.5%;
+    padding: 1% 2.5%;
 }
 
 .homeInfo h1 {
@@ -86,7 +86,7 @@
     font-size: clamp(12px, 5vw, 16px);
 }
 
-.homeLinks a {
+.pageLinks a {
     background: #363636;
     font-size: 20px;
     border-radius: 7px;
@@ -97,8 +97,7 @@
     transition: all .2s;
     position: relative;
     padding: 0.5em;
-    width: 6vw;
-    margin: 7.5% 0;
+    margin: 2vh 0;
     top: 0;
     left: 0;
     cursor: pointer;
@@ -106,7 +105,11 @@
     font-size: clamp(13px, 5vw, 17px);
 }
 
-.homeLinks a:active {
+.pageLinks i {
+    margin-left: 1em;
+}
+
+.pageLinks a:active {
     top: 2px;
     left: 2px;
     box-shadow: 1px 1px 0px #000000;
@@ -117,7 +120,6 @@
     display: flex;
     align-items: center;
     column-gap: 2vw;
-    margin-top: 1.5vw;
 }
 
 .icon {
@@ -277,4 +279,490 @@
 #HomeCoreAnimation path {
     transform: scale(0);
     transform-origin: center;
+}
+
+.aboutSection {
+    margin-top: 93vh;
+    margin-left: 10vw;
+}
+
+.aboutMe {
+    transform: scale(0);
+    position: absolute;
+    overflow: hidden;
+    background-color: #13222bcc;
+    background-image: linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%), linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%); background-size: 100% 4px;
+    border-radius: 10px;
+    border: solid 2px #078a9bcc;
+    box-shadow: 0 0 30px rgb(117, 216, 255);
+    width: 40vw;
+    height: 65vh;
+    padding: 3vw 3vw;
+}
+
+.aboutMe h1, .aboutMe h3{
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 5px rgba(0, 230, 246, 0.7),
+        0 0 10px rgba(0, 230, 246, 0.5);
+    text-align: center;
+    margin: 2% 0;
+}
+
+.aboutMe h1 {
+    font-weight: 700;
+    font-size: clamp(40px, 5vw, 50px);
+}
+
+.aboutMe h3 {
+    font-size: clamp(18px, 5vw, 22px);
+}
+
+.aboutMe p {
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 5px rgba(0, 0, 0, 0.7),
+        0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 7.5%;
+    text-align: justify;
+    font-size: clamp(12px, 5vw, 17px);
+}
+
+.aboutMe ul {
+    font-size: clamp(12px, 5vw, 16px);
+    display: flex;
+    list-style: none;
+}
+
+.aboutMe a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+.fotoSection {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    padding: 0.5em;
+    position: absolute;
+    border-radius: 50%;
+    width: 45vw;
+    height: 45vw;
+    top: -10vh;
+    left: 40vw;
+    background: radial-gradient(
+        circle, 
+        rgba(5, 32, 36, 0.945) 30%,
+        transparent 45%
+    );
+    position: relative;
+    overflow: hidden;
+}
+
+.fotoSection svg path, #profileFoto {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.fotoSection svg {
+    position: absolute;
+    width: 45%;
+    height: 45%;
+    z-index: 40;
+}
+
+.fotoSection img {
+    border: solid 1px #9DF8FF;
+    box-shadow: 0 0 2px rgb(117, 216, 255);
+    border-radius: 50%;
+    width: 35%; 
+    height: 35%;
+    align-self: center; 
+    justify-self: center;
+    z-index: 60; 
+    animation: desapear 10s linear infinite;
+    transition: all 0.6s;
+}
+
+.fotoSection img:hover {
+    width: 38%;
+    height: 38%;
+    box-shadow: 0 0 20px rgb(117, 216, 255);
+}
+
+@keyframes desapear {
+    0% {
+        opacity: 0.8;
+    }
+
+    1% {
+        opacity: 0;
+    }
+
+    2% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+#fotoRing {
+    transform-origin: center;
+    animation: clockWise 7s linear infinite;
+}
+
+#ringGroup path {
+    transform-origin: center;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#middleRingGroup_2, #outRingGroup {
+    animation-name: clockWise;
+    animation-duration: 10s;
+}
+
+#innerRingGroup, #middleRingGroup_1 {
+    animation-name: antiClockWise;
+    animation-duration: 10s;
+}
+
+#outFotoRing {
+    transform-origin: center;
+    animation: antiClockWise 5s linear infinite;
+}
+
+.contactSection {
+    margin-top: 170vh;
+    margin-left: 77vw;
+    width: 52vw;
+    transform: scale(0);
+}
+
+.contactSection h1 {
+    overflow: hidden;
+    background-color: #13222bcc;
+    background-image: linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%), linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%); background-size: 100% 4px;
+    border-radius: 10px;
+    border: solid 2px #078a9bcc;
+    box-shadow: 0 0 30px rgb(117, 216, 255);
+    width: 30vw;
+    margin-left: 22.5%;
+    padding: 1em;
+    text-align: center;
+    font-size: clamp(32px, 5vw, 36px);
+}
+
+.contactSection h1, .contactSection h2 {
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 10px rgba(0, 230, 246, 0.877),
+        0 0 15px rgba(0, 230, 246, 0.856);
+    text-align: center;
+}
+
+.contactMethods {
+    margin-top: 1vh;
+    transform: scale(0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    width: 52vw;
+}
+
+.contactMethods h2 {
+    margin-top: 15%;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: #13222bcc;
+    background-image: linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%), linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%); background-size: 100% 4px;
+    border-radius: 10px;
+    border: solid 2px #078a9bcc;
+    box-shadow: 0 0 30px rgb(117, 216, 255);
+    width: 25vw;
+    height: 55vh;
+}
+
+.contactForm form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-bottom: 15%;
+}
+
+.inputGroup {
+    position: relative;
+    margin-bottom: 2em;
+    width: 100%;
+}
+
+.inputGroup input, .inputGroup textarea {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px #50dcffa1 solid;
+    display: block;
+    font-size: clamp(12px, 5vw, 16px);
+    width: 100%;
+    padding: 0.5em 1em;
+    color: aliceblue;
+    transition: all 0.5s;
+}
+
+.inputGroup textarea {
+    resize: none;
+}
+
+.inputGroup input:focus,
+.inputGroup input:valid,
+.inputGroup textarea:focus,
+.inputGroup textarea:valid {
+    outline: 0;
+    border-bottom-color: #9DF8FF;
+}
+
+.inputGroup label {
+    position: absolute;
+    top: 0.2vh;
+    left: 1em;
+    pointer-events: none;
+}
+
+.inputGroup label span {
+    display: inline-block;
+    font-size: clamp(12px, 5vw, 16px);
+    color: aliceblue;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.inputGroup input:focus+label span,
+.inputGroup input:valid+label span,
+.inputGroup textarea:focus+label span,
+.inputGroup textarea:valid+label span {
+    color: lightblue;
+    transform: translateY(-100%);
+}
+
+.contactForm button {
+    --c1: #000000;
+    --c2: #50dcffa1;
+    width: fit-content;
+    padding: 0.5em 1em;
+    border: 0.3em solid var(--c2);
+    border-radius: 0.3em;
+    background: transparent;
+    overflow: hidden;
+    position: relative;
+    font-size: clamp(12px, 5vw, 16px);
+    transition: all 300ms cubic-bezier(0.83, 0, 0.17, 1);
+    cursor: pointer;
+    & > #buttonContent {
+        color: var(--c2);
+        font-weight: bold;
+        position: relative;
+        z-index: 100;
+        transition: all 700ms cubic-bezier(0.83, 0, 0.17, 1);
+    }
+}
+
+.contactForm button::after {
+    content: "";
+    width: 0;
+    height: calc(300% + 1em);
+    position: absolute;
+    translate: -50% -50%;
+    inset: 50%;
+    rotate: 30deg;
+    background-color: var(--c2);
+    transition: all 1000ms cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+.contactForm button:hover {
+    box-shadow: 0 0 10px rgb(117, 216, 255);
+    & > #buttonContent {
+        color: var(--c1);
+    }
+    &::after {
+        width: calc(120% + 1em);
+    }
+}
+
+.contactForm button:active {
+    box-shadow: 0 0 10px rgb(117, 216, 255);
+    scale: 0.98;
+    filter: brightness(0.9);
+}
+
+.contactData {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: #13222bcc;
+    background-image: linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%), linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%); background-size: 100% 4px;
+    border-radius: 10px;
+    border: solid 2px #078a9bcc;
+    box-shadow: 0 0 30px rgb(117, 216, 255);
+    width: 25vw;
+    height: 55vh;
+    padding: 0 2em;
+}
+
+.contactLinks {
+    margin-bottom: 15%;
+}
+
+.contactData ul {
+    font-size: clamp(12px, 5vw, 16px);
+    display: flex;
+    list-style: none;
+}
+
+.contactData .pageLinks {
+    margin-top: 10%;
+}
+
+.contactData a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+.contactData p {
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+    font-size: clamp(13px, 5vw, 17px);
+}
+
+.contactData p i {
+    color: #00e6f6;
+}
+
+.copiable-text {
+    cursor: pointer;
+    transition: all 0.6s;
+}
+
+.copiable-text:hover {
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 5px rgb(0, 230, 246),
+        0 0 10px rgb(0, 230, 246);
+}
+
+.copy-feedback {
+    position: absolute;
+    display: block;
+    height: 1.2em;
+    color: #4CAF50;
+    font-size: 0.9em;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.copy-feedback.show {
+    opacity: 1;
+}
+
+.flash-container {
+    position: relative; 
+    width: auto;
+    height: auto;
+    text-align: center;
+    margin-bottom: 20px; 
+    overflow: hidden;
+}
+
+.flash-message {
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    width: 18vw;
+    transform: translate(-50%, 0) scale(0); 
+    transform-origin: center;
+    z-index: 1000;
+    padding: 1.5em;
+    border-radius: 5px;
+    font-weight: bold;
+    white-space: wrap;
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 5px rgb(48, 48, 48),
+        0 0 10px rgb(58, 58, 58);
+    animation: flash-deploy 0.8s forwards ease-out;
+}
+
+.flash-message.hidden {
+    animation: flash-retract 0.5s forwards ease-in;
+}
+
+@keyframes flash-deploy {
+    0% {
+        transform: translate(-50%, 0) scaleY(0.1) scaleX(0);
+    }
+    55% {
+        transform: translate(-50%, 0) scaleY(1.05) scaleX(0);
+    }
+    60% {
+        transform: translate(-50%, 0) scaleY(1) scaleX(0.1);
+    }
+    90% {
+        transform: translate(-50%, 0) scaleY(1) scaleX(1.05);
+    }
+    100% {
+        transform: translate(-50%, 0) scaleY(1) scaleX(1);
+    }
+}
+
+@keyframes flash-retract {
+    0% { 
+        transform: translate(-50%, 0) scaleY(1) scaleX(1);
+    }
+    10% {
+        transform: translate(-50%, 0) scaleY(1) scaleX(1.05);
+    }
+    40% {
+        transform: translate(-50%, 0) scaleY(1) scaleX(0.1);
+    }
+    50% {
+        transform: translate(-50%, 0) scaleY(1.05) scaleX(0);
+    }
+    100% {
+        transform: translate(-50%, 0) scaleY(0.1) scaleX(0);
+        visibility: hidden;
+    }
+}
+
+.flash-success {
+    background-color: #38814acc;
+    background-image: linear-gradient(rgba(27, 68, 23, 0.5) 50%, transparent 50%), linear-gradient(rgba(30, 87, 33, 0.5) 50%, transparent 50%); background-size: 100% 4px;
+    border: 1px solid #28a746a1;
+    box-shadow: 0 0 20px rgb(138, 255, 134);
+}
+
+.flash-error {
+    background-color: #472123cc;
+    background-image: linear-gradient(rgba(30, 10, 10, 0.5) 50%, transparent 50%), linear-gradient(rgba(30, 10, 10, 0.5) 50%, transparent 50%); background-size: 100% 4px;
+    border: 1px solid #dc354694;
+    box-shadow: 0 0 20px rgb(255, 134, 134);
 }

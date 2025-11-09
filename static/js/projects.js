@@ -1,22 +1,35 @@
 import { componentAnimation } from "./animation.js";
 
-export async function portfolioStart() {
-    portfolioContent();
-    componentAnimation('.portfolio', '-32vw', '-5rem');
+export async function portfolioStart(toScale) {
+
+    const projectButton = document.querySelector('.projectsButton');
+    const techStackButton = document.querySelector('.techStackButton');
+    projectButton.classList.remove('portfolioButtonActive');
+    techStackButton.classList.remove('portfolioButtonActive');
+
+    portfolioContent(projectButton, techStackButton);
+    componentAnimation(toScale, '-30vw', '-6rem');
+
+    if (toScale === '.portfolio') {
+        projectButton.classList.add('portfolioButtonActive');
+    } else {
+        techStackButton.classList.add('portfolioButtonActive');
+    }
+
     projectCarousel();
 }
 
-function portfolioContent() {
-    
-    const projectButton = document.querySelector('.projectsButton');
-    const techStackButton = document.querySelector('.techStackButton');
-
+function portfolioContent(projectButton, techStackButton) {
     projectButton.addEventListener('click', () => {
-        componentAnimation('.portfolio', '-30vw', '-5rem');
+        componentAnimation('.portfolio', '-30vw', '-8rem');
+        projectButton.classList.add('portfolioButtonActive');
+        techStackButton.classList.remove('portfolioButtonActive');
     });
 
     techStackButton.addEventListener('click', () => {
-        componentAnimation('.techStack', '-30vw', '-2rem');
+        componentAnimation('.techStack', '-30vw', '-4rem');
+        projectButton.classList.remove('portfolioButtonActive');
+        techStackButton.classList.add('portfolioButtonActive');
     });
 }
 

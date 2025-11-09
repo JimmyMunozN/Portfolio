@@ -31,9 +31,9 @@ async function animateExit(targetElement, xvalue, yvalue) {
 export async function componentAnimation(target, xvalue, yvalue) {
     const componentClass = {
         'home': '.homeInfo',
-        'about': '.about',
+        'about': '.aboutMe',
         'projects': '.portfolioButtons',
-        'contact': '.contact',
+        'contact': '.contactSection',
         'start': '.start'
     };
 
@@ -95,10 +95,10 @@ export async function pulseAnimation(target) {
     const animationTarget = PATH_SELECTORS[target];
     stopAnimation();
 
-    let durationPulse = 1000;
+    let durationPulse = 2000;
     
     if (target === 'home') {
-        durationPulse = 4000;
+        durationPulse = 5000;
     }
     
     await new Promise(resolve => setTimeout(resolve, 400));
@@ -107,10 +107,10 @@ export async function pulseAnimation(target) {
         
         const centerTargets = PATH_SELECTORS['start']
 
-        const baseDuration = 3000;
+        const baseDuration = 2000;
 
         currentAnimation = animate(svg.createDrawable(centerTargets), {
-            draw: ['-0.1 -0.1', '-0.165 -0.15', '1 1'], 
+            draw: ['-0.1 -0.1', '-0.05 -0.01', '1 1'], 
             ease: 'linear',
             duration: baseDuration,
             loop: true,

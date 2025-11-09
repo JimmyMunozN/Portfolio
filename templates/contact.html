@@ -1,0 +1,98 @@
+<div class="contactSection" id="contactPage">
+    <h1>Get In Touch</h1>
+    <div class="contactMethods" id="contactContent">
+        <div class="contactForm">
+            <h2>Send an email</h2>
+
+            <div class="flashContainer">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <form id='contactForm' method="POST" action="/contacto">
+                
+                <div class="inputGroup">
+
+                    <input type="text" id="name" name="name" required="">
+                    <label for="name">
+                        <span style="transition-delay:0ms">N</span>
+                        <span style="transition-delay:50ms">a</span>
+                        <span style="transition-delay:100ms">m</span>
+                        <span style="transition-delay:150ms">e</span>
+                    </label>
+
+                </div>
+                <div class="inputGroup">
+
+                    <input type="email" id="email" name="email" required="">
+                    <label for="email">
+                        <span style="transition-delay:0ms">E</span>
+                        <span style="transition-delay:50ms">m</span>
+                        <span style="transition-delay:100ms">a</span>
+                        <span style="transition-delay:150ms">i</span>
+                        <span style="transition-delay:200ms">l</span>
+                    </label>
+
+                </div>
+                
+                <div class="inputGroup">
+
+                    <textarea id="message" name="message" rows="4" required=""></textarea>
+                    <label for="message">
+                        <span style="transition-delay:0ms">M</span>
+                        <span style="transition-delay:50ms">e</span>
+                        <span style="transition-delay:100ms">s</span>
+                        <span style="transition-delay:150ms">s</span>
+                        <span style="transition-delay:200ms">a</span>
+                        <span style="transition-delay:250ms">g</span>
+                        <span style="transition-delay:300ms">e</span>
+                    </label>
+
+                </div>
+
+                <button type="submit"><span id='buttonContent'>Enviar Mensaje</span></button>
+                
+            </form>
+        </div>
+        <div class="contactData">
+            <h2>Contact information</h2>
+
+            <div class="contactLinks">
+
+                <p>
+                    <strong><i class="fa fa-address-card-o" aria-hidden="true"></i> Name:</strong> Jimmy M. Muñoz Nocua
+                </p>
+
+                <p>
+                    <strong><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: </strong> 
+                    <span id="emailToCopy" class="copiable-text" data-copy-text="jimmymunozn@gmail.com" title="Click to copy">jimmymunozn@gmail.com</span> 
+                    <span id="copyMessage" class="copy-feedback"></span>
+                </p>
+
+                <p>
+                    <strong><i class="fa fa-map-o" aria-hidden="true"></i> Location:</strong> Bogotá, Colombia | Remoto
+                </p>
+
+                <p>
+                    <strong><i class="fa fa-language" aria-hidden="true"></i> Languages:</strong> Español | English (B2)
+                </p>
+
+                <ul class="pageLinks">
+                    <li><a href="{{ url_for('downloadCV') }}">Download CV<i class="fa fa-download" aria-hidden="true"></i></a></li>
+                </ul>
+
+                <ul class="socialLinks">
+                    <li><a href="https://github.com/JimmyMunozN" class="icon gitIcon"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/jimmy-muñoz-613b00302/?trk=opento_sprofile_goalscard" class="icon inIcon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                    <li><a href="https://stackoverflow.com/users/31647090/jimmy-muñoz" class="icon stackIcon"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>

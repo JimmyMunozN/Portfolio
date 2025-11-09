@@ -1,6 +1,8 @@
 import { pulseAnimation, componentAnimation } from "./animation.js";
 import { homeStart } from "./home.js";
+import { aboutStart } from "./about.js";
 import { portfolioStart } from "./projects.js";
+import { contactStart } from "./contact.js";
 
 const vwToPx = (vw) => (vw * window.innerWidth) / 100;
 
@@ -10,6 +12,8 @@ const BG_WIDTH_VW = 205;
 const BG_HEIGHT_VW = 130;
 let actualTarget = 0;
 let isScrolling = false;
+let animationObject = null;
+let previousTarget = null;
 
 function animationScroll(target) {
     const targets = {
@@ -44,8 +48,11 @@ async function scrollToTarget(target) {
 }
 
 async function handlePageTransition(targetPageName) {
-    scrollToTarget(targetPageName);
-    await loadContent(targetPageName);
+    if (previousTarget != targetPageName) {
+        scrollToTarget(targetPageName);
+        await loadContent(targetPageName);
+    }
+    previousTarget = targetPageName;
 }
 
 async function loadContent(pageName) {
@@ -67,6 +74,8 @@ async function loadContent(pageName) {
 
         const htmlContent = await response.text();
 
+        navIndicator(pageName);
+
         oldContentDiv.innerHTML = newContentDiv.innerHTML;
 
         newContentDiv.innerHTML = htmlContent;
@@ -77,10 +86,19 @@ async function loadContent(pageName) {
         oldContentDiv.innerHTML = null;
 
         if (pageName === 'projects') {
-            portfolioStart();
+            if (animationObject === 'techStack') {
+                portfolioStart('.techStack');
+            } else {
+                portfolioStart('.portfolio');
+            }
         } else if (pageName === 'home') {
             homeStart();
-            setLinks('');
+            setLinks();
+        } else if (pageName === 'about') {
+            aboutStart();
+            setLinks();
+        } else if (pageName === 'contact') {
+            contactStart();
         }
 
     } catch (error) {
@@ -98,6 +116,8 @@ async function handleVerticalScroll(event) {
     }
     
     isScrolling = true; 
+
+    animationObject = null;
     
     const direction = event.deltaY > 0 ? 1 : -1;
     let newIndex = actualTarget + direction;
@@ -121,17 +141,36 @@ function setLinks() {
 
     document.querySelectorAll('#newContent a').forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault(); 
 
-            const pageName = e.currentTarget.getAttribute('data-page'); 
+            const pageName = e.currentTarget.getAttribute('data-page');
+            const targetAnimation = e.currentTarget.getAttribute('data-target-animation');
             
             if (pageName && validPages.has(pageName)) {
+                e.preventDefault();
+
+                if (targetAnimation === 'techStack') {
+                    animationObject = 'techStack';
+                } else {
+                    animationObject = null;
+                }
+
                 handlePageTransition(pageName);
             }
         });
     });
 }
 
+function navIndicator(target) {
+    document.querySelectorAll('#navbar a').forEach(link => {
+        const pageName = link.getAttribute('data-page'); 
+
+        if (pageName === target) {
+            link.classList.add('navigateIndicator');
+        } else {
+            link.classList.remove('navigateIndicator');
+        }
+    });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const validPages = new Set(['home', 'about', 'projects', 'contact']);
@@ -150,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (pageName && validPages.has(pageName)) {
                 handlePageTransition(pageName);
+                animationObject = null;
             }
         });
     });
@@ -157,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#navbar button').addEventListener('click', (e) => {
         e.preventDefault();
         handlePageTransition('start');
+        animationObject = null;
     });
 });
 

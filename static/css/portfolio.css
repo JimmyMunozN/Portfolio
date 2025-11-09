@@ -5,7 +5,7 @@
 
 .portfolioButtons {
     transform: scale(0);
-    margin-top: 10%;
+    margin-top: 8%;
     margin-left: 10%;
     display: flex;
     flex-direction: column;
@@ -57,6 +57,19 @@
 }
 
 .portfolioButtons button:hover i {
+    color: #f3f3f3;
+    background:rgb(0, 183, 255);
+    right: 0vw;
+}
+
+.portfolioButtons .portfolioButtonActive { 
+    color: rgba(97, 255, 255, 0.788);
+    box-shadow: 0 0 10px rgb(117, 216, 255);
+    background: #252525;
+    justify-content: start;
+}
+
+.portfolioButtons .portfolioButtonActive i { 
     color: #f3f3f3;
     background:rgb(0, 183, 255);
     right: 0vw;
@@ -151,7 +164,8 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    background: #05131f;
+    background-color: #0d1b24ee;
+    background-image: linear-gradient(rgba(10, 25, 30, 0.7) 50%, transparent 50%), linear-gradient(rgba(10, 25, 30, 0.7) 50%, transparent 50%); background-size: 100% 4px;
     width: 20vw;
     height: 45vh; 
     padding: 0 10%;
@@ -187,6 +201,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-shadow: 
+        1px 1px 0 #003135, 
+        -1px -1px 0 #003135,
+        
+        0 0 5px rgba(0, 116, 124, 0.7),
+        0 0 10px rgba(0, 116, 124, 0.7);
     padding: 0;
     transition: transform 0.7s;
 }
@@ -214,6 +234,12 @@
 }
 
 .description p {
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 5px rgba(0, 0, 0, 0.7),
+        0 0 10px rgba(0, 0, 0, 0.5);
     font-size: clamp(8px, 5vw, 12px);
     text-align: justify;
 }
@@ -230,7 +256,9 @@
     margin-right: 5px;
     padding: 5px;
     border-radius: 5px;
-    background: #444;
+    background: #041e22b6;
+    background-color: rgb(66, 66, 66);
+    border: 3px solid #24242473;
     font-size: clamp(6px, 5vw, 10px);
     display: inline-block;
 }
@@ -282,7 +310,8 @@
     left: 140vw;
     margin: 2.5% 5%;
     transform: scale(0);
-    background: #05131f;
+    background-color: #13222bcc;
+    background-image: linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%), linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%); background-size: 100% 4px;
     width: 40vw;
     height: 60vh; 
     padding: 2%;
@@ -296,13 +325,21 @@
 }
 
 .techStack header {
-    background: #000;
     width: 100%;
     text-align: center;
     padding: 10px 0;
 }
 
 .techStack header h2 {
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 5px rgba(0, 230, 246, 0.7),
+        0 0 10px rgba(0, 230, 246, 0.5);
+    text-align: center;
+    font-weight: 700;
+    font-size: clamp(40px, 5vw, 50px);
     margin: 0;
 }
 
