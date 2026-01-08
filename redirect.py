@@ -23,8 +23,9 @@ except EnvironmentError as e:
     print(f"ERROR DE CONFIGURACIÓN: {e}")
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 
 RECEIVING_EMAIL = 'jimmymunozn@gmail.com' 
 
@@ -89,7 +90,7 @@ def handle_contact_form():
         except Exception as e:
             print(f"Error al enviar correo: {e}")
             flash('Error al enviar tu mensaje. Verifica la configuración del servidor.', 'error')
-            
+
     return render_template('contact.html')
 
 if __name__ == '__main__':
