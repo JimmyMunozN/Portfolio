@@ -64,36 +64,41 @@ function setupContactForm() {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch('/contacto', {
+            const response = await fetch('https://formspree.io/f/xnjneyee', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
             });
+            if (response.ok) {
+                form.reset();
 
-            if (!response.ok) {
-                throw new Error(`Error en el servidor: ${response.status}`);
+                const contentDiv = document.getElementById('content');
+                const newContentDiv = contentDiv.querySelector('.newContent');
+
+                newContentDiv.innerHTML = `
+                    <div class="flash-success">
+                        ¡Gracias! Tu mensaje ha sido enviado correctamente a través de Formspree.
+                    </div>
+                `;
+
+                const contactSection = document.getElementById('contactPage');
+                const contactMethods = document.getElementById('contactContent');
+                if(contactSection) contactSection.style.transform = 'scale(1)';
+                if(contactMethods) contactMethods.style.transform = 'scale(1)';
+
+                setupFlashMessagesTimeout();
+                setupContactForm(); 
+
+            } else {
+                const data = await response.json();
+                throw new Error(data.error || "Error al enviar");
             }
-
-            const newHtmlContent = await response.text();
-            
-            const contentDiv = document.getElementById('content');
-            const newContentDiv = contentDiv.querySelector('.newContent');
-
-            newContentDiv.innerHTML = newHtmlContent;
-
-            const contactSection = document.getElementById('contactPage');
-            const contactMethods = document.getElementById('contactContent');
-
-            contactSection.style.transform = 'scale(1)';
-            contactMethods.style.transform = 'scale(1)';
-
-            setupFlashMessagesTimeout();
-
-            setupContactForm(); 
 
         } catch (error) {
             console.error("Fallo al enviar el formulario:", error);
-            alert("Error de conexión. Por favor, intenta más tarde.");
-            
+            alert("Hubo un problema al enviar tu mensaje. Por favor, intenta de nuevo.");
         } finally {
             buttonContent.textContent = originalText;
             submitButton.disabled = false;
