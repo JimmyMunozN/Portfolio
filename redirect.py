@@ -93,5 +93,7 @@ def handle_contact_form():
             
     return render_template('contact.html')'''
 
+app = app
+
 if __name__ == '__main__':
     app.run(debug=True)
